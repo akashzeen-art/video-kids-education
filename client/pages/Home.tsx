@@ -373,7 +373,7 @@ export default function Home() {
                       <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
                   </div>
-                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">7 mn</span>
+                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">7 min</span>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-base font-black text-foreground mb-1">Regarde des Vidéos</h3>
@@ -460,7 +460,7 @@ export default function Home() {
                       <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
                   </div>
-                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">11 mn</span>
+                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">11 min</span>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-base font-black text-foreground mb-1">Dessins Lou !</h3>

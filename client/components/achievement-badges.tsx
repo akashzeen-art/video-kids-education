@@ -6,7 +6,7 @@ export const achievements = [
   { icon: "⚡", label: "Ultra Rapide",      desc: "Réponds en 30 sec",         color: "from-blue-400 to-cyan-500" },
   { icon: "🎯", label: "Score Parfait",    desc: "100% de réussite",         color: "from-green-400 to-emerald-500" },
   { icon: "🔥", label: "En Feu",           desc: "7 jours d’affilée",         color: "from-red-400 to-orange-500" },
-  { icon: "🌟", label: "Superstar",        desc: "Gagne 100 points",         color: "from-pink-400 to-rose-500" },
+  { icon: "🌟", label: "Superstar",        desc: "Gagne 100 �toiles",         color: "from-pink-400 to-rose-500" },
 ];
 
 const containerVariants = {

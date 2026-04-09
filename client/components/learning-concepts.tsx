@@ -46,7 +46,7 @@ const FEATURED = [
     thumbnail: "/thumnails/memory-game.jpg",
     title: "Jeu de Mémoire",
     tag: "Jeu",
-    duration: "Jouer maintenant",
+    duration: "5 min",
     color: "from-secondary/20 to-rose-100/40",
     border: "border-secondary/30 hover:border-secondary/60",
     tagColor: "bg-secondary/10 text-secondary",
