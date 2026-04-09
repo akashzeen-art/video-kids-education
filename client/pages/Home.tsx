@@ -373,7 +373,7 @@ export default function Home() {
                       <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
                   </div>
-                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">7 min</span>
+                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">7 mn</span>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-base font-black text-foreground mb-1">Regarde des Vidéos</h3>
@@ -423,14 +423,14 @@ export default function Home() {
               >
                 <span className="absolute top-3 left-3 z-10 w-8 h-8 rounded-full bg-accent text-white text-xs font-black flex items-center justify-center shadow-md">03</span>
                 <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-background border-2 border-accent/30 items-center justify-center text-accent font-black text-lg shadow">›</div>
-                <div className="h-36 bg-gradient-to-br from-accent/10 to-orange-50/60 p-3 flex flex-col justify-center gap-1.5">
+                <div className="h-36 bg-gradient-to-br from-accent/10 to-orange-50/60 dark:from-accent/20 dark:to-orange-900/20 p-3 flex flex-col justify-center gap-1.5">
                   <p className="text-xs font-black text-foreground/80 text-center mb-1">Que signifie "Chat" ?</p>
                   <div className="grid grid-cols-2 gap-1">
                     {[
-                      { label: "Chien",  style: "bg-white border-foreground/10 text-foreground/40" },
-                      { label: "Chat ✓", style: "bg-green-100 border-green-400 text-green-700" },
-                      { label: "Oiseau", style: "bg-white border-foreground/10 text-foreground/40" },
-                      { label: "Poisson", style: "bg-white border-foreground/10 text-foreground/40" },
+                      { label: "Chien",  style: "bg-white dark:bg-muted border-foreground/10 dark:border-foreground/20 text-foreground/40 dark:text-foreground/50" },
+                      { label: "Chat ✓", style: "bg-green-100 dark:bg-green-900/40 border-green-400 dark:border-green-500 text-green-700 dark:text-green-400" },
+                      { label: "Oiseau", style: "bg-white dark:bg-muted border-foreground/10 dark:border-foreground/20 text-foreground/40 dark:text-foreground/50" },
+                      { label: "Poisson", style: "bg-white dark:bg-muted border-foreground/10 dark:border-foreground/20 text-foreground/40 dark:text-foreground/50" },
                     ].map((o) => (
                       <div key={o.label} className={`text-center py-1 rounded-lg border-2 text-xs font-bold ${o.style}`}>{o.label}</div>
                     ))}
@@ -460,7 +460,7 @@ export default function Home() {
                       <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                     </div>
                   </div>
-                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">11 min</span>
+                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-black/70 text-white text-xs font-bold">11 mn</span>
                 </div>
                 <div className="p-4 flex flex-col flex-1">
                   <h3 className="text-base font-black text-foreground mb-1">Dessins Lou !</h3>
