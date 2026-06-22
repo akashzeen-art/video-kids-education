@@ -4,6 +4,7 @@ module.exports = {
       name: "videokidseducation",
       cwd: "/var/www/vasnumero/videokidseducation",
       script: "dist/server/node-build.mjs",
+      exec_mode: "fork",
       instances: 1,
       autorestart: true,
       watch: false,
