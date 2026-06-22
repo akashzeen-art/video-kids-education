@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { handleVasDeactivate, handleVasDetail, handleVasStatus } from "./routes/vas";
 
 export function createServer() {
   const app = express();
@@ -18,6 +19,10 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  app.get("/api/vas/status", handleVasStatus);
+  app.get("/api/vas/detail", handleVasDetail);
+  app.get("/api/vas/deactivate", handleVasDeactivate);
 
   return app;
 }

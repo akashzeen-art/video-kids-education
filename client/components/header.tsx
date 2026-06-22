@@ -13,6 +13,7 @@ const GAMES = [
 const navLinks = [
   { label: "Accueil",   path: "/" },
   { label: "Vidéos", path: "/browse" },
+  { label: "Mon Compte", path: "/account" },
   { label: "À propos",  path: "/about" },
 ];
 

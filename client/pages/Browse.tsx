@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Play, Star, Users, Search } from "lucide-react";
 import Header from "@/components/header";
 import { videos, categories, type Video } from "@/data/videos";
 import { motion, AnimatePresence } from "framer-motion";
 import AnimatedBackground from "@/components/animated-background";
+import { useVideoAccess } from "@/hooks/useVideoAccess";
+import PhoneNumberPopup from "@/components/phone-number-popup";
 
 interface VideoModalProps { video: Video; onClose: () => void; }
 
@@ -57,6 +59,7 @@ export default function Browse() {
   const [selectedCategory, setSelectedCategory] = useState("tout");
   const [search, setSearch] = useState("");
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const { handleVideoClick, isChecking, pendingVideo, closePhonePopup, handlePhoneSubmit, accessError } = useVideoAccess(setSelectedVideo);
 
   const filtered = videos.filter((v) => {
     const matchCat = selectedCategory === "tout" || v.category.toLowerCase().includes(selectedCategory.toLowerCase());
@@ -66,6 +69,13 @@ export default function Browse() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50/60 to-pink-50/50 relative overflow-hidden">
+      <PhoneNumberPopup
+        open={!!pendingVideo}
+        isChecking={isChecking}
+        onClose={closePhonePopup}
+        onSubmit={handlePhoneSubmit}
+        error={accessError}
+      />
       {selectedVideo && <VideoModal video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
       <AnimatedBackground />
       <div className="relative z-10">
@@ -121,7 +131,7 @@ export default function Browse() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.04 }}
-                onClick={() => setSelectedVideo(video)}
+                onClick={() => handleVideoClick(video)}
                 className="group cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-3xl glass-card h-48 mb-3 shadow-md hover:shadow-xl transition-all duration-300 border-2 border-secondary/10 group-hover:border-primary/40 group-hover:scale-105">

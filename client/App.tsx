@@ -14,7 +14,9 @@ import MemoryGame from "./pages/MemoryGame";
 import QuizGame from "./pages/QuizGame";
 import WordScramble from "./pages/WordScramble";
 import SpellIt from "./pages/SpellIt";
+import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
+import { VasProvider } from "./contexts/VasContext";
 
 const queryClient = new QueryClient();
 
@@ -43,11 +45,13 @@ export const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <VasProvider>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="/about" element={<About />} />
+          <Route path="/account" element={<Account />} />
           <Route path="/memory-game" element={<MemoryGame />} />
           <Route path="/quiz" element={<QuizGame />} />
           <Route path="/word-scramble" element={<WordScramble />} />
@@ -55,6 +59,7 @@ export const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </VasProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

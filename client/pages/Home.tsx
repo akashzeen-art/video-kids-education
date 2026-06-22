@@ -14,6 +14,8 @@ import OrbitalIntro from "@/components/orbital-intro";
 import { useState, useEffect } from "react";
 import { videos, categories, type Video } from "@/data/videos";
 import { motion, AnimatePresence } from "framer-motion";
+import { useVideoAccess } from "@/hooks/useVideoAccess";
+import PhoneNumberPopup from "@/components/phone-number-popup";
 
 const PRELOADER_KEY = "eduvid_visited";
 
@@ -115,13 +117,14 @@ const VideoCard = ({ video, delay, onClick }: { video: Video; delay: number; onC
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("tout");
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+  const { handleVideoClick, isChecking, pendingVideo, closePhonePopup, handlePhoneSubmit, accessError } = useVideoAccess(setSelectedVideo);
   const [preloaderDone, setPreloaderDone] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [showOrbital, setShowOrbital] = useState(false);
 
   useEffect(() => {
-    // On refresh, clear flag so preloader shows
     const navType = (performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming)?.type;
+    // On refresh, clear flag so preloader shows
     if (navType === "reload") {
       sessionStorage.removeItem("eduvid_navigated");
     }
@@ -142,6 +145,13 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50/60 to-pink-50/50 relative overflow-hidden font-sans">
+      <PhoneNumberPopup
+        open={!!pendingVideo}
+        isChecking={isChecking}
+        onClose={closePhonePopup}
+        onSubmit={handlePhoneSubmit}
+        error={accessError}
+      />
       {selectedVideo && <VideoModal video={selectedVideo} onClose={() => setSelectedVideo(null)} />}
       {showOrbital && <OrbitalIntro onDone={() => { setShowOrbital(false); setShowPopup(true); }} />}
       {showPopup && <StartLearningPopup onClose={() => setShowPopup(false)} />}
@@ -270,7 +280,7 @@ export default function Home() {
             {/* Videos Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
               {filteredVideos.map((video, idx) => (
-                <VideoCard key={video.id} video={video} delay={idx} onClick={() => setSelectedVideo(video)} />
+                <VideoCard key={video.id} video={video} delay={idx} onClick={() => handleVideoClick(video)} />
               ))}
             </div>
 
@@ -365,7 +375,7 @@ export default function Home() {
                 <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-background border-2 border-primary/30 items-center justify-center text-primary font-black text-lg shadow">›</div>
                 <div
                   className="relative h-36 overflow-hidden cursor-pointer group"
-                  onClick={() => setSelectedVideo(videos[10])}
+                  onClick={() => handleVideoClick(videos[10])}
                 >
                   <img src="/thumnails/greetings-french.jpg" alt="Greetings in French" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
@@ -391,7 +401,7 @@ export default function Home() {
                 <span className="absolute top-3 left-3 z-10 w-8 h-8 rounded-full bg-secondary text-white text-xs font-black flex items-center justify-center shadow-md">02</span>
                 <div className="hidden lg:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-background border-2 border-secondary/30 items-center justify-center text-secondary font-black text-lg shadow">›</div>
                 <div className="h-36 bg-gradient-to-br from-secondary/10 to-pink-50/60 p-3 flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-1.5 w-full">
+                  <div className="grid grid-cols-3 gap-1 w-full">
                     {[
                       { show: true,  type: "emoji", content: "🐱" },
                       { show: false, type: "back",  content: "?" },
@@ -400,7 +410,7 @@ export default function Home() {
                       { show: true,  type: "word",  content: "Pomme" },
                       { show: false, type: "back",  content: "?" },
                     ].map((c, i) => (
-                      <div key={i} className={`aspect-square rounded-xl flex items-center justify-center text-xs font-black shadow-sm border-2
+                      <div key={i} className={`aspect-square rounded-xl flex items-center justify-center text-[10px] font-black shadow-sm border-2 overflow-hidden
                         ${c.show && c.type === "emoji" ? "bg-blue-100 border-primary/40 text-base" : ""}
                         ${c.show && c.type === "word"  ? "bg-rose-100 border-secondary/40 text-secondary" : ""}
                         ${!c.show ? "bg-primary border-primary text-white" : ""}
@@ -408,7 +418,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-                <div className="p-4 flex flex-col flex-1">
+                <div className="p-4 pt-10 flex flex-col flex-1">
                   <h3 className="text-base font-black text-foreground mb-1">Jeu de Mémoire</h3>
                   <p className="text-xs text-foreground/60 font-medium leading-relaxed mb-3 flex-1">Associe les mots français à leurs images emoji pour mémoriser le vocabulaire.</p>
                   <Link to="/memory-game" className="text-xs font-bold text-secondary hover:underline flex items-center gap-1">Jouer maintenant <span>→</span></Link>
@@ -452,7 +462,7 @@ export default function Home() {
                 <span className="absolute top-3 left-3 z-10 w-8 h-8 rounded-full bg-green-500 text-white text-xs font-black flex items-center justify-center shadow-md">04</span>
                 <div
                   className="relative h-36 overflow-hidden cursor-pointer group"
-                  onClick={() => setSelectedVideo(videos[23])}
+                  onClick={() => handleVideoClick(videos[23])}
                 >
                   <img src="/thumnails/lou-ep1.jpg" alt="Lou! Cartoon" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors flex items-center justify-center">
