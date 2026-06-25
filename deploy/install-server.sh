@@ -32,7 +32,7 @@ VITE_VAS_PRODUCT_CODE=AMVKE
 VAS_API_BASE_URL=http://68.183.88.91/adpoke/cnt
 VAS_PRODUCT_CODE=AMVKE
 VITE_VAS_CAMPAIGN_URL=http://68.183.88.91/adpoke/cnt/act
-PORT=3011
+PORT=3020
 PING_MESSAGE=ping pong
 EOF
   echo "Created .env — review before going live."
@@ -50,7 +50,7 @@ else
   pm2 save
 fi
 
-echo "==> App running on port 3011"
+echo "==> App running on port 3020"
 echo "==> Next: configure nginx with deploy/nginx-kidzzbuzz.conf"
 echo "    sudo cp deploy/nginx-kidzzbuzz.conf /etc/nginx/sites-available/kidzzbuzz.com"
 echo "    sudo ln -sf /etc/nginx/sites-available/kidzzbuzz.com /etc/nginx/sites-enabled/"
