@@ -18,7 +18,7 @@ VITE_VAS_PRODUCT_CODE=AMVKE
 VAS_API_BASE_URL=http://68.183.88.91/adpoke/cnt
 VAS_PRODUCT_CODE=AMVKE
 VITE_VAS_CAMPAIGN_URL=http://68.183.88.91/adpoke/cnt/act
-PORT=3020
+PORT=3021
 PING_MESSAGE=ping pong
 EOF
 fi
@@ -31,19 +31,19 @@ echo "========== 4. Restart PM2 (videokidseducation only) =========="
 pm2 startOrReload deploy/ecosystem.config.cjs
 pm2 save
 
-echo "========== 5. Verify app on port 3020 =========="
+echo "========== 5. Verify app on port 3021 =========="
 sleep 2
-TITLE=$(curl -s http://127.0.0.1:3020/ | grep -o '<title>[^<]*</title>' || true)
-echo "Page title on :3020 => $TITLE"
+TITLE=$(curl -s http://127.0.0.1:3021/ | grep -o '<title>[^<]*</title>' || true)
+echo "Page title on :3021 => $TITLE"
 if echo "$TITLE" | grep -qi "selfistar"; then
-  echo "ERROR: Port 3020 still serves SelfiStar! Check PM2 port conflicts."
+  echo "ERROR: Port 3021 still serves SelfiStar! Check PM2 port conflicts."
   pm2 list
   exit 1
 fi
 if ! echo "$TITLE" | grep -qi "Kids Education"; then
   echo "WARN: Expected 'Kids Education' title. Got: $TITLE"
 fi
-curl -s http://127.0.0.1:3020/api/ping
+curl -s http://127.0.0.1:3021/api/ping
 echo ""
 
 echo "========== 6. Nginx kidzzbuzz.com =========="
