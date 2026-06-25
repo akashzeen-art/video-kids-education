@@ -34,7 +34,7 @@ export default function About() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-bold text-primary">À propos d'Univers des Enfants</span>
+              <span className="text-sm font-bold text-primary">À propos d'Kids Education</span>
             </div>
             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-4 leading-tight">
               Le français, <span className="text-primary">amusant</span> pour chaque enfant
@@ -61,13 +61,13 @@ export default function About() {
                 </div>
                 <div className="space-y-4 text-foreground/70 font-medium leading-relaxed">
                   <p>
-                    Univers des Enfants a été créé avec un seul objectif — offrir aux enfants une façon joyeuse et sans pression de découvrir la langue française.
+                    Kids Education a été créé avec un seul objectif — offrir aux enfants une façon joyeuse et sans pression de découvrir la langue française.
                   </p>
                   <p>
                     L'apprentissage traditionnel des langues peut sembler ennuyeux et stressant pour les jeunes apprenants. Nous avons voulu changer cela en combinant ce que les enfants aiment déjà : dessins animés, chansons, jeux et visuels colorés.
                   </p>
                   <p>
-                    Chaque vidéo, jeu et quiz sur Univers des Enfants est soigneusement choisi pour être adapté à l'âge, engageant et vraiment éducatif — pour que les parents soient rassurés et les enfants s'amusent.
+                    Chaque vidéo, jeu et quiz sur Kids Education est soigneusement choisi pour être adapté à l'âge, engageant et vraiment éducatif — pour que les parents soient rassurés et les enfants s'amusent.
                   </p>
                   <p className="font-bold text-foreground">
                     Et le meilleur ? C'est 100% gratuit. Sans inscription, sans abonnement, sans barrières.

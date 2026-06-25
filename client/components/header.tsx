@@ -35,7 +35,7 @@ export default function Header() {
           >
             <img 
               src="/logo/kidzbuzz.png" 
-              alt="Univers des Enfants" 
+              alt="Kids Education" 
               className="h-16 w-auto object-contain transform hover:rotate-3 transition-transform"
             />
           </Link>

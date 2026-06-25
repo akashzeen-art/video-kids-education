@@ -40,8 +40,8 @@ if echo "$TITLE" | grep -qi "selfistar"; then
   pm2 list
   exit 1
 fi
-if ! echo "$TITLE" | grep -qi "Univers des Enfants"; then
-  echo "WARN: Expected 'Univers des Enfants' title. Got: $TITLE"
+if ! echo "$TITLE" | grep -qi "Kids Education"; then
+  echo "WARN: Expected 'Kids Education' title. Got: $TITLE"
 fi
 curl -s http://127.0.0.1:3011/api/ping
 echo ""

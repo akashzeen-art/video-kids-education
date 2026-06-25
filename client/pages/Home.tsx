@@ -307,7 +307,7 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-5xl font-black text-foreground text-center mb-10 sm:mb-12 animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
-              Pourquoi les enfants adorent <span className="text-primary animate-bounce-rotate">Univers des Enfants</span>
+              Pourquoi les enfants adorent <span className="text-primary animate-bounce-rotate">Kids Education</span>
             </h2>
 
             <div className="grid md:grid-cols-4 gap-8">
@@ -496,7 +496,7 @@ export default function Home() {
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow">
                     <BookOpen className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Univers des Enfants</span>
+                  <span className="text-2xl font-black bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Kids Education</span>
                 </div>
                 <p className="text-sm text-foreground/60 font-medium leading-relaxed">
                   Des vidéos, jeux et activités en français conçus pour les enfants curieux qui adorent apprendre !
@@ -532,7 +532,7 @@ export default function Home() {
 
             {/* Bottom copyright */}
             <p className="text-center text-sm text-foreground/50 font-medium">
-              © 2026 Univers des Enfants. Rendre l’apprentissage amusant pour chaque enfant !
+              © 2026 Kids Education. Rendre l’apprentissage amusant pour chaque enfant !
             </p>
           </div>
         </footer>
